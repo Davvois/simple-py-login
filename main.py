@@ -128,12 +128,15 @@ def main():
             print("Invalid Number! Please try again...")
             os.abort()
     
+    #Se la bool logged_in = Vera, allora eseguiamo la funzione whenLogged()
     if logged_in == True:
         whenLogged()
         return
 
+#Funzione che viene eseguita nel caso l'utente sia loggato
 def whenLogged():
     public_coins = 500.0
+    #Loadiamo le credenziali grazie alla funzione load_credentials()
     jsonData = load_credentials()
 
     while True:
@@ -149,14 +152,18 @@ def whenLogged():
         print("What would you like to do?")
         inpt2 = int(input("1. Deposit Coins         2. Withdraw Coins > "))
 
+        #Prendiamo tutti i dati del file json
         for entry in jsonData:
             name = entry["Name"]
             passwrd = entry["Password"]
             coins = entry["Coins"]
 
+        #Controlliamo che l'utente abbia scelto "Deposit Coins"
         if inpt2 == 1:
             os.system("cls")
-            public_coins_deposit = float(input("Amount of money to deposit (Your money: " + str(public_coins) + ") > "))           
+            public_coins_deposit = float(input("Amount of money to deposit (Your money: " + str(public_coins) + ") > "))  
+
+            #Controlliamo che l'importo da depositare inserito dall'utente sia minore dei soldi totali         
             if public_coins_deposit > public_coins:
                 print("You can't afford to deposit all that money!")
                 time.sleep(1)
