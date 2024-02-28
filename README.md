@@ -1,3 +1,3 @@
 # simple-py-login
-This is a very short code written by me, it's a login simulator, nothing much.
-In the future it's gonna be updated.
+SimplePyLogin it's a simple bank login that I made too challenge my Python skills. <br>
+As you can see in the sour
