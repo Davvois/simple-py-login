@@ -92,34 +92,31 @@ def main():
 
             name = input("Enter your new bank name here > ")
 
-            if name.count(name) <= 3:
-                os.system("cls")
-                print("Name must be 4 or more letters! Try again")
-                time.sleep(1)
+            if len(name) <= 3:
+                print("Name must be 4 letters or more!")
 
-            else:
-                passwrd = getpass("Enter your new bank password here > ")
+            passwrd = getpass("Enter your new bank password here > ")
 
-                new_credentials = {"Name": name, "Password": passwrd, "Coins": 0.0}
-                #Appendiamo le credenziali messe dall'utente nell'array jsonData e salviamo le credenziali con la funzione save_credentials()
-                jsonData.append(new_credentials)
-                save_credentials(jsonData)
+            new_credentials = {"Name": name, "Password": passwrd, "Coins": 0.0}
+            #Appendiamo le credenziali messe dall'utente nell'array jsonData e salviamo le credenziali con la funzione save_credentials()
+            jsonData.append(new_credentials)
+            save_credentials(jsonData)
 
+            time.sleep(0.75)
+            os.system("cls")
+            print("Please wait", end="")
+
+            for c in dots:
+                print(c, end="")
                 time.sleep(0.75)
-                os.system("cls")
-                print("Please wait", end="")
 
-                for c in dots:
-                    print(c, end="")
-                    time.sleep(0.75)
-
-                time.sleep(0.5)
-                os.system("cls")
-                print("Successfully created new account!")
-                logged_in = True
-                time.sleep(1)
-                #Fine del ciclo WHILE
-                break
+            time.sleep(0.5)
+            os.system("cls")
+            print("Successfully created new account!")
+            logged_in = True
+            time.sleep(1)
+            #Fine del ciclo WHILE
+            break
         
         #Se l'input dell'utente e diverso da 1 o 2, allora abortiamo
         else:
@@ -181,6 +178,31 @@ def whenLogged():
                 save_credentials(jsonData)
 
                 print("Successfully deposited money!")
+                time.sleep(1)
+            
+        elif inpt2 == 2:
+            os.system("cls")
+            public_coins_withdraw = float(input("Amount of money to withdraw (Your money: " + str(coins) + ") > ")) 
+
+            #Controlliamo che l'importo da prendere inserito dall'utente sia minore dei soldi totali         
+            if public_coins_withdraw > coins:
+                print("You can't afford to withdraw all that money!")
+                time.sleep(1)
+
+            else:
+                public_coins += public_coins_withdraw
+
+                old_credentials = {"Name" : name, "Password" : passwrd, "Coins" : coins}
+
+                
+                coins -= public_coins_withdraw
+                new_credentials = {"Name": name, "Password": passwrd, "Coins": coins}
+
+                jsonData.remove(old_credentials)
+                jsonData.append(new_credentials)
+                save_credentials(jsonData)
+
+                print("Successfully withdrawn money!")
                 time.sleep(1)
             
 if __name__ == "__main__":
