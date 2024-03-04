@@ -1,7 +1,7 @@
 import time, json, os
 from getpass import getpass
 
-jsonFile = "D:\\Coding\\Python\\Bank\\credentials.json"
+jsonFile = "YOUR DIRECTORY"
 
 #Funzione per caricare le credenziali
 def load_credentials():
