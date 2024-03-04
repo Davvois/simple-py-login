@@ -10,3 +10,6 @@ I think that these passwords can also be "cracked" with my password-cracker tool
 this needs to be tested, and somehow I will test it, but I dunno. <br><br>
 
 <img src="https://media.licdn.com/dms/image/C5612AQG26z63TvDh8A/article-cover_image-shrink_600_2000/0/1589415739648?e=2147483647&v=beta&t=T0_ykDX3WqpNmaHu9PQLZDqoTFt3_KtfEH0V7cZivgI"></img>
+
+# READ THIS
+Change the directory of the credentials.json file in the main.py file
